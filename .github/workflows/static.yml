@@ -31,13 +31,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.github/workflows'
+          # 根据静态文件实际位置修改：
+          path: '.'           # 纯静态文件在仓库根目录时使用
+          # path: './docs'    # 静态文件在 docs/ 目录时使用
+          # path: './public'  # 静态文件在 public/ 目录时使用
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
